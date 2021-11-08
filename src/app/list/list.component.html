@@ -1,0 +1,32 @@
+<h1 style="text-align: center;">Todo list</h1>
+<div class="row">
+
+  <table class="table" cdkDropList (cdkDropListDropped)="drop($event)">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Detail</th>
+        <th scope="col">DueDate</th>
+        <th scope="col">ACTIONS</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of list" cdkDrag>
+        <th scope="row">{{list.id}}</th>
+        <td>{{list.title}}</td>
+        <td>{{list.detail}}</td>
+        <td>{{list.dueDate | date : 'MM/dd/yyyy'}}</td>
+        <td><i class='bx bxs-trash-alt mx-3' style='color:#fb0909; font-size: 20px;' data-bs-toggle="tooltip"
+            data-bs-placement="left" title="Delete" (click) = "deleteTodo(list.id)"></i>
+          <i class='bx bx-edit' style='color:#015e1b; font-size: 20px;' data-bs-toggle="tooltip" data-bs-placement="top"
+            title="Edit" routerLink = "/edit/{{list.id}}" ></i>
+          <i class='bx bx-check mx-3' style='color:#44b9e0; font-size: 30px;' data-bs-toggle="tooltip"
+            data-bs-placement="left" title="task Completed"></i>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
